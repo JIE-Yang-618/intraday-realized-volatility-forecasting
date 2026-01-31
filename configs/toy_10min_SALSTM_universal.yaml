@@ -1,0 +1,38 @@
+project:
+  name: rv-forecasting-toy
+  seed: 618
+  output_dir: outputs/toy_10min_SALSTM_universal
+data:
+  kind: toy
+  n_assets: 12
+  n_clusters: 3
+  t_train: 1200
+  t_val: 200
+  t_test: 200
+  horizon_steps: 1
+  lag_p: 60
+scheme:
+  name: universal
+  use_market_rv: false
+  use_cluster_rv: false
+model:
+  name: SALSTM
+  hidden_size: 32
+  num_layers: 1
+  dropout: 0.1
+  lr: 0.001
+  epochs: 8
+  batch_size: 64
+msa: null
+eval:
+  metrics:
+    - mse
+    - mae
+    - qlike
+    - ru
+    - ru_tc
+  sharpe_ratio: 0.4
+  risk_aversion: 2.0
+  tc_rate: 0.0005
+meta:
+  interval: 10min

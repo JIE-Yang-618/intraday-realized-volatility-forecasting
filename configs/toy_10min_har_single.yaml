@@ -1,0 +1,26 @@
+project:
+  name: rv-forecasting-toy
+  seed: 618
+  output_dir: outputs/toy_har_single
+
+data:
+  kind: toy
+  n_assets: 6
+  n_clusters: 2
+  t_train: 1000
+  t_val: 200
+  t_test: 200
+  horizon_steps: 1
+  lag_p: 60
+
+scheme:
+  name: single
+  use_market_rv: false
+  use_cluster_rv: false
+
+model:
+  name: har_d
+  lr: 0.0
+
+eval:
+  metrics: [mse, qlike]

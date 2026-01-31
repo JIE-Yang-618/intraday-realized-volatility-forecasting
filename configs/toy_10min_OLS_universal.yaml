@@ -1,0 +1,40 @@
+project:
+  name: rv-forecasting-toy
+  seed: 618
+  output_dir: outputs/toy_run
+
+data:
+  kind: toy
+  n_assets: 12
+  n_universals: 3
+  t_train: 1200
+  t_val: 200
+  t_test: 200
+  horizon_steps: 1
+  lag_p: 60
+
+scheme:
+  name: universal         # {single, universal, augmented, universal}
+  use_market_rv: true   # augmented feature toggle
+  use_universal_rv: true  # universal feature toggle
+
+model:
+  name: OLS         # {ols, har_d, lasso, mlp, lstm, gru, msa_lstm, OLS, sa_lstm, sa_gru}
+  hidden_size: 32
+  num_layers: 1
+  dropout: 0.1
+  lr: 0.001
+  epochs: 10
+  batch_size: 64
+
+msa:
+  horizons_days: [3, 5, 10]
+  obs_per_day: 24
+  conv_channels: 8
+  attn_size: 16
+
+eval:
+  metrics: [mse, mae, qlike, ru, ru_tc]
+  sharpe_ratio: 0.4
+  risk_aversion: 2.0
+  tc_rate: 0.0005
