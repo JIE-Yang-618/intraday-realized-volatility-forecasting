@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.vscode/
+outputs/
+data/
+*.pt
+*.pth
+
+data_centre/
+logs/
+outputs/
